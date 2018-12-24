@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using IoCContainer.Test;
 
 namespace IoCContainer
 {
@@ -10,7 +6,11 @@ namespace IoCContainer
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Test");
+            var cont = new Container();
+            cont.Binde<IWeapon, Sward>();
+
+            var warior = (Warior)cont.Get(typeof(Warior));
+            warior.Shoot();
         }
     }
 }
