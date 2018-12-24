@@ -1,10 +1,10 @@
 ﻿namespace IoCContainer.Test
 {
-    class Warior
+    public class Warrior
     {
         public IWeapon Weapon { get; set; }
 
-        public Warior(IWeapon weapon)
+        public Warrior(IWeapon weapon)
         {
             Weapon = weapon;
         }
