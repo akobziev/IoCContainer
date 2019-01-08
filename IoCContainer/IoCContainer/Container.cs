@@ -10,23 +10,45 @@ namespace IoCContainer
 
         public void Binde<TInterface, TImpl>() where TImpl : TInterface
         {
-            Console.WriteLine($"Registration of {typeof(TImpl).Name} as a {typeof(TInterface).Name}");
             reg.Add(typeof(TInterface), () => Get(typeof(TImpl)));
+        }
+
+        public void Binde<TInterface>(Func<TInterface> classGenerator)
+        {
+            reg.Add(typeof(TInterface), () => classGenerator());
+        }
+
+        public void BindeSingleton<TInterface>(TInterface instanse)
+        {
+            reg.Add(typeof(TInterface), () => instanse);
+        }
+
+        public void BindeSingleton<TInterface>(Func<TInterface> classGenerator)
+        {
+            var lazy = new Lazy<TInterface>(classGenerator);
+            Binde(() => lazy.Value);
         }
 
         public object Get(Type type)
         {
-            Console.WriteLine($"I'm trying to get {type.Name}");
-            if (reg.TryGetValue(type, out Func<object> creator))
+            Func<object> creator;
+            if (reg.TryGetValue(type, out creator))
             {
                 return creator();
             }
-            return CreateInstance(type);
+            if (!reg.TryGetValue(type, out creator))
+            {
+                return Activator.CreateInstance(type);
+            }
+            else if (!type.IsAbstract)
+            {
+                return CreateInstance(type);
+            }
+            throw new InvalidOperationException($"No implementation for {type}");
         }
 
         private object CreateInstance(Type type)
         {
-            Console.WriteLine($"I'm trying to crete {type.Name}");
             var ctor = type.GetConstructors().Single();
             var parameterTypes = ctor.GetParameters().Select(p => p.ParameterType);
             var dependencies = parameterTypes.Select(t => Get(t)).ToArray();
