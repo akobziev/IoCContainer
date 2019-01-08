@@ -1,6 +1,6 @@
 ﻿namespace IoCContainer.Test
 {
-    interface IWeapon
+    public interface IWeapon
     {
         void Kill();
     }

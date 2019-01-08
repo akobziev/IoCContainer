@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace IoCContainer
 {
-    class Container
+    public class Container
     {
         Dictionary<Type, Func<object>> reg = new Dictionary<Type, Func<object>>();
 
