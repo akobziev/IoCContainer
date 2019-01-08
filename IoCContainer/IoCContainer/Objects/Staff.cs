@@ -2,11 +2,11 @@
 
 namespace IoCContainer.Objects
 {
-    class Sward : IWeapon
+    class Staff : IWeapon
     {
         public void Kill()
         {
-            Console.WriteLine("Chick-Chick");
+            Console.WriteLine("Feo-Feo!");
         }
     }
 }

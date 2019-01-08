@@ -1,19 +1,14 @@
 ﻿using System;
 
-namespace IoCContainer.Test
+namespace IoCContainer.Objects
 {
-    class Warior
+    public class Archer : ICharacter
     {
         public IWeapon Weapon { get; private set; }
 
-        public Warior()
+        public Archer()
         {
-
-        }
-
-        public Warior(IWeapon weapon)
-        {
-            Weapon = weapon;
+            Weapon = new Bow();
         }
 
         public void Shoot()
@@ -22,7 +17,7 @@ namespace IoCContainer.Test
             {
                 Weapon.Kill();
             }
-            throw new InvalidOperationException("Warior has now weapon.");
+            throw new InvalidOperationException("Archer has now weapon.");
         }
     }
 }

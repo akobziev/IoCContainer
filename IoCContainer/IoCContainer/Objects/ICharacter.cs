@@ -1,7 +1,7 @@
 ﻿namespace IoCContainer.Objects
 {
-    public interface IWeapon
+    interface ICharacter
     {
-        void Kill();
+        void Shoot();
     }
 }

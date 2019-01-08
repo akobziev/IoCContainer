@@ -1,4 +1,4 @@
-﻿using IoCContainer.Test;
+﻿using IoCContainer.Objects;
 
 namespace IoCContainer
 {
@@ -6,9 +6,6 @@ namespace IoCContainer
     {
         static void Main(string[] args)
         {
-            var cont = new Container();
-
-            var warior = (Warior)cont.Get(typeof(Warior));
         }
     }
 }

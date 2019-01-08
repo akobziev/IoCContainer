@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IoCContainer.Test
+namespace IoCContainer.Objects
 {
     public class Bow : IWeapon
     {
