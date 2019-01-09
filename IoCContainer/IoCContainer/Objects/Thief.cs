@@ -2,13 +2,13 @@
 
 namespace IoCContainer.Objects
 {
-    public class Archer : ICharacter
+    public abstract class Thief : ICharacter
     {
         public IWeapon Weapon { get; private set; }
 
-        public Archer()
+        public Thief(IWeapon weapon)
         {
-            Weapon = new Bow();
+            Weapon = weapon;
         }
 
         public void Shoot()
@@ -17,10 +17,7 @@ namespace IoCContainer.Objects
             {
                 Weapon.Kill();
             }
-            else
-            {
-                throw new InvalidOperationException("Archer has now weapon.");
-            }
+            throw new InvalidOperationException("Thief has now weapon.");
         }
     }
 }

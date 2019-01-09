@@ -7,11 +7,6 @@ namespace IoCContainer.Objects
         public IWeapon Weapon { get; private set; }
         public IMagicObject MagicObject { get; private set; }
 
-        public Wizard()
-        {
-
-        }
-
         public Wizard(IWeapon mainWeapon, IMagicObject magicObject)
         {
             Weapon = mainWeapon;
@@ -25,7 +20,10 @@ namespace IoCContainer.Objects
                 Weapon.Kill();
                 MagicObject.Cast();
             }
-            throw new InvalidOperationException("Wizard has now weapon.");
+            else
+            {
+                throw new InvalidOperationException("Wizard has now weapon.");
+            }
         }
     }
 }

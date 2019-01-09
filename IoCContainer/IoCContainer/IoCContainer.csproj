@@ -48,6 +48,7 @@
     <Compile Include="Objects\IMagicObject.cs" />
     <Compile Include="Objects\MagicScroll.cs" />
     <Compile Include="Objects\Staff.cs" />
+    <Compile Include="Objects\Thief.cs" />
     <Compile Include="Objects\Wizard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

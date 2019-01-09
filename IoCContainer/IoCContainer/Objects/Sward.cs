@@ -2,7 +2,7 @@
 
 namespace IoCContainer.Objects
 {
-    class Sward : IWeapon
+    public class Sward : IWeapon
     {
         public void Kill()
         {

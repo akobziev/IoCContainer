@@ -6,11 +6,6 @@ namespace IoCContainer.Objects
     {
         public IWeapon Weapon { get; private set; }
 
-        public Warrior()
-        {
-
-        }
-
         public Warrior(IWeapon weapon)
         {
             Weapon = weapon;
@@ -22,7 +17,10 @@ namespace IoCContainer.Objects
             {
                 Weapon.Kill();
             }
-            throw new InvalidOperationException("Warior has now weapon.");
+            else
+            {
+                throw new InvalidOperationException("Warior has now weapon.");
+            }
         }
     }
 }

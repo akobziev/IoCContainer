@@ -6,7 +6,7 @@ namespace IoCContainer
 {
     public class Container
     {
-        Dictionary<Type, Func<object>> reg = new Dictionary<Type, Func<object>>();
+        public readonly Dictionary<Type, Func<object>> reg = new Dictionary<Type, Func<object>>();
 
         public void Binde<TInterface, TImpl>() where TImpl : TInterface
         {
@@ -36,10 +36,10 @@ namespace IoCContainer
             {
                 return creator();
             }
-            if (!reg.TryGetValue(type, out creator))
-            {
-                return Activator.CreateInstance(type);
-            }
+            //if (!reg.TryGetValue(type, out creator) && !type.IsAbstract)
+            //{
+            //    return Activator.CreateInstance(type);
+            //}
             else if (!type.IsAbstract)
             {
                 return CreateInstance(type);
